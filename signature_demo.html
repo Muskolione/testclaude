@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <title>Corentum — Handtekening Demo</title>
+  <style>
+    body { margin: 0; background: #0d1116; min-height: 100vh; display: grid; place-items: center; font-family: system-ui, sans-serif; }
+
+    /* ---- watermark achtergrond ---- */
+    .corentum-watermark-bg {
+      position: relative;
+      background: #191F27;
+      color: #fff;
+      padding: 64px 56px;
+      overflow: hidden;
+      border-radius: 4px;
+      width: min(900px, 90vw);
+      min-height: 360px;
+    }
+    .corentum-watermark {
+      position: absolute;
+      left: 50%; top: 50%;
+      width: 560px;
+      transform: translate(-50%, -50%) rotate(-8deg);
+      opacity: 0.18;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .corentum-watermark-bg > .content {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ---- e-mail context simulatie ---- */
+    .email-header {
+      margin-bottom: 32px;
+      border-bottom: 1px solid #2a3340;
+      padding-bottom: 20px;
+    }
+    .email-header p { margin: 4px 0; font-size: 13px; color: #7a8694; }
+    .email-header span { color: #c9d1db; }
+    .email-body {
+      font-size: 14px;
+      color: #c9d1db;
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 560px;
+    }
+
+    /* ---- handtekening ---- */
+    .signature {
+      border-top: 1px solid #2a3340;
+      padding-top: 24px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .sig-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-right: 24px;
+      border-right: 1px solid #2a3340;
+    }
+    .sig-logo svg { width: 38px; height: 38px; }
+    .sig-logo-text { display: flex; flex-direction: column; gap: 1px; }
+    .sig-logo-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 2px;
+    }
+    .sig-logo-tagline {
+      font-size: 8px;
+      color: #7a8694;
+      letter-spacing: 2px;
+      line-height: 1.5;
+    }
+    .sig-info { padding-left: 4px; }
+    .sig-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 2px;
+    }
+    .sig-title {
+      font-size: 12px;
+      color: #7a8694;
+      margin: 0 0 10px;
+    }
+    .sig-detail {
+      font-size: 12px;
+      color: #aeb6bf;
+      margin: 3px 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .sig-detail a { color: #aeb6bf; text-decoration: none; }
+    .sig-detail a:hover { color: #fff; }
+    .sig-label { color: #4a5568; font-size: 11px; width: 10px; }
+  </style>
+</head>
+<body>
+
+  <section class="corentum-watermark-bg">
+
+    <!-- Watermark — vervang src met het echte SVG/PNG pad -->
+    <!-- Watermark: vervang onderstaande SVG door het echte logo-bestand indien gewenst -->
+    <svg class="corentum-watermark" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M100,10 C100,10 170,48 175,52 C180,56 180,100 180,100 C180,100 180,144 175,148 C170,152 100,190 100,190 C100,190 30,152 25,148 C20,144 20,100 20,100 C20,100 20,56 25,52 C30,48 100,10 100,10 Z" stroke="#8B7A2E" stroke-width="12" fill="none" stroke-linejoin="round"/>
+      <path d="M100,42 C100,42 148,68 152,71 C156,74 156,100 156,100 C156,100 156,126 152,129 C148,132 100,158 100,158 C100,158 52,132 48,129 C44,126 44,100 44,100 C44,100 44,74 48,71 C52,68 100,42 100,42 Z" stroke="#8B7A2E" stroke-width="12" fill="none" stroke-linejoin="round"/>
+      <line x1="25" y1="52"  x2="48"  y2="65"  stroke="#8B7A2E" stroke-width="12" stroke-linecap="round"/>
+      <line x1="175" y1="148" x2="152" y2="135" stroke="#8B7A2E" stroke-width="12" stroke-linecap="round"/>
+    </svg>
+
+    <div class="content">
+
+      <!-- Gesimuleerde e-mail -->
+      <div class="email-header">
+        <p><span>Van:</span> Voornaam Achternaam &lt;naam@corentum.com&gt;</p>
+        <p><span>Aan:</span> klant@bedrijf.nl</p>
+        <p><span>Onderwerp:</span> Terugkoppeling offerte Q3</p>
+      </div>
+
+      <div class="email-body">
+        Beste,<br><br>
+        Hartelijk dank voor uw interesse. Hierbij stuur ik u de gevraagde informatie toe.
+        Mocht u nog vragen hebben, dan hoor ik dat graag.<br><br>
+        Met vriendelijke groet,
+      </div>
+
+      <!-- Handtekening -->
+      <div class="signature">
+        <div class="sig-logo">
+          <!-- Corentum kubus icoon (inline SVG) -->
+          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" width="44" height="44">
+            <!-- Buitenste kubus vorm met afgeronde hoeken -->
+            <path d="
+              M100,10
+              C100,10 170,48 175,52
+              C180,56 180,100 180,100
+              C180,100 180,144 175,148
+              C170,152 100,190 100,190
+              C100,190 30,152 25,148
+              C20,144 20,100 20,100
+              C20,100 20,56 25,52
+              C30,48 100,10 100,10 Z
+            " stroke="#8B7A2E" stroke-width="12" fill="none" stroke-linejoin="round"/>
+            <!-- Binnenste kubus vorm -->
+            <path d="
+              M100,42
+              C100,42 148,68 152,71
+              C156,74 156,100 156,100
+              C156,100 156,126 152,129
+              C148,132 100,158 100,158
+              C100,158 52,132 48,129
+              C44,126 44,100 44,100
+              C44,100 44,74 48,71
+              C52,68 100,42 100,42 Z
+            " stroke="#8B7A2E" stroke-width="12" fill="none" stroke-linejoin="round"/>
+            <!-- Verbindingslijnen boven-links en onder-rechts (kubus diepte) -->
+            <line x1="25" y1="52"  x2="48"  y2="65"  stroke="#8B7A2E" stroke-width="12" stroke-linecap="round"/>
+            <line x1="175" y1="148" x2="152" y2="135" stroke="#8B7A2E" stroke-width="12" stroke-linecap="round"/>
+          </svg>
+          <div class="sig-logo-text">
+            <span class="sig-logo-name">CORENTUM</span>
+            <span class="sig-logo-tagline">WHERE STRUCTURE<br>MEETS INNOVATION</span>
+          </div>
+        </div>
+
+        <div class="sig-info">
+          <p class="sig-name">Voornaam Achternaam</p>
+          <p class="sig-title">Functietitel</p>
+          <div class="sig-detail">
+            <span class="sig-label">T</span>
+            <a href="tel:+310000000000">+31 (0)0 000 00 00</a>
+          </div>
+          <div class="sig-detail">
+            <span class="sig-label">W</span>
+            <a href="https://www.corentum.com" target="_blank">www.corentum.com</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>
