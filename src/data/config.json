@@ -1,0 +1,87 @@
+{
+  "modules": {
+    "bg": [
+      {
+        "id": "bg-standaard",
+        "label": "Begane grond - standaard",
+        "kenmerken": {
+          "aantalKamers": 1,
+          "indeling": "Woonkamer met open keuken, trap naar verdieping, hal met meterkast (MK) en aansluiting wasmachine/droger (W/Dr)",
+          "trapgatPositie": "midden-rechts, tegen de achtergevel",
+          "meterkastPositie": "vooraan bij de entree",
+          "zijgevelOpeningen": false,
+          "notities": "Basisplattegrond, identiek voor alle posities. Kopwoningen krijgen er een zij-uitbouw met raam bij (zie 'uitbouwBijKop')."
+        },
+        "uitbouwBijKop": {
+          "aanwezig": true,
+          "omschrijving": "Extra volume aan de zijgevel met raamopening, alleen mogelijk als de positie een vrije zijgevel heeft (kopwoning)."
+        }
+      }
+    ],
+    "verdieping": [
+      {
+        "id": "verdieping-standaard",
+        "label": "Verdieping - standaard (1 badkamer)",
+        "kenmerken": {
+          "aantalKamers": 3,
+          "indeling": "Hoofdslaapkamer voor, 2 slaapkamers achter, overloop met trapgat in het midden, badkamer (ligbad, wastafel, toilet) linksachter, inloopkast/linnenkast naast de trap",
+          "trapgatPositie": "midden, aansluitend op begane grond",
+          "meterkastPositie": "n.v.t. op verdieping (schacht loopt door vanaf begane grond)",
+          "zijgevelOpeningen": "alleen bij kopwoning-positie (zie positie.compatibleWith)",
+          "aantalBadkamers": 1
+        },
+        "compatibleWith": ["positie-kop-links", "positie-tussen", "positie-kop-rechts"]
+      },
+      {
+        "id": "verdieping-ensuite",
+        "label": "Verdieping - met en-suite (2 badkamers)",
+        "kenmerken": {
+          "aantalKamers": 3,
+          "indeling": "Zelfde als standaard, met dit verschil: de inloopkast naast de trap is vervangen door een en-suite badkamer (dubbele wastafel + vrijstaand ligbad) bereikbaar vanuit de hoofdslaapkamer. De bestaande badkamer linksachter (ligbad, wastafel, toilet) blijft ongewijzigd.",
+          "trapgatPositie": "midden, aansluitend op begane grond",
+          "meterkastPositie": "n.v.t. op verdieping (schacht loopt door vanaf begane grond)",
+          "zijgevelOpeningen": "alleen bij kopwoning-positie (zie positie.compatibleWith)",
+          "aantalBadkamers": 2
+        },
+        "compatibleWith": ["positie-kop-links", "positie-tussen", "positie-kop-rechts"]
+      }
+    ],
+    "positie": [
+      {
+        "id": "positie-kop-links",
+        "label": "Kopwoning links",
+        "kenmerken": {
+          "zijgevelBeschikbaar": true,
+          "spiegeling": false,
+          "omschrijving": "Meest linkse woning in het blok, vrije zijgevel met extra uitbouw/raam op de begane grond."
+        },
+        "compatibleWith": ["verdieping-standaard", "verdieping-ensuite"]
+      },
+      {
+        "id": "positie-tussen",
+        "label": "Tussenwoning",
+        "kenmerken": {
+          "zijgevelBeschikbaar": false,
+          "spiegeling": false,
+          "omschrijving": "Woning tussen twee buren in, geen vrije zijgevel dus geen zij-uitbouw/raam op de begane grond. Komt 3x voor in een blok van 5."
+        },
+        "compatibleWith": ["verdieping-standaard", "verdieping-ensuite"]
+      },
+      {
+        "id": "positie-kop-rechts",
+        "label": "Kopwoning rechts (gespiegeld)",
+        "kenmerken": {
+          "zijgevelBeschikbaar": true,
+          "spiegeling": true,
+          "omschrijving": "Meest rechtse woning in het blok, gespiegelde kopwoning-links met vrije zijgevel en zij-uitbouw/raam op de begane grond."
+        },
+        "compatibleWith": ["verdieping-standaard", "verdieping-ensuite"]
+      }
+    ]
+  },
+  "renders": {
+    "pathTemplate": "/renders/{bg}_{verdieping}_{positie}.jpg",
+    "placeholder": "/renders/placeholder.svg",
+    "notitie": "Zodra de echte renders klaar zijn: sla ze op onder deze bestandsnaam-conventie in public/renders/. Geen enkele codewijziging nodig, de configurator pakt automatisch de juiste afbeelding of valt terug op de placeholder als het bestand nog ontbreekt."
+  }
+}
